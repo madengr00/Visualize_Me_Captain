@@ -1,4 +1,4 @@
-Name,County,Population,Median Age,Household Income,Per Capita Income,Unemployment Count,Poverty Count,Poverty Rate,State,abbr,Unemployement Rate
+Name,County,Population,MedianAge,Household Income,PerCapitaIncome,UnemploymentCount,PovertyCount,PovertyRate,State,abbr,UnemploymentRate
 "Corozal Municipio, Puerto Rico",Corozal Municipio,34933.0,38.1,14752.0,7887.0,3296.0,19146.0,54.807774883348124,Puerto Rico,PR,0.09435204534394412
 "Maunabo Municipio, Puerto Rico",Maunabo Municipio,11297.0,43.5,17636.0,8830.0,735.0,5945.0,52.62459059927414,Puerto Rico,PR,0.06506152075772328
 "Peñuelas Municipio, Puerto Rico",Peñuelas Municipio,21661.0,36.4,16868.0,7983.0,1601.0,12379.0,57.14879276118369,Puerto Rico,PR,0.07391163842851207
