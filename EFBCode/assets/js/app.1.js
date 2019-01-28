@@ -49,7 +49,7 @@ d3.csv("assets/data/data.csv")
             data.UnemploymentRate = +data.UnemploymentRate*100;
             //state abbreviation and name
             data.abbr = data.abbr;
-            data.State = data.State;
+            data.State = data.state;
             console.log(data.abbr);
         });
 
@@ -144,7 +144,7 @@ d3.csv("assets/data/data.csv")
             .attr("cx", d => xLinearScale(d[chosenXAxis]))
             .attr("cy", d => yLinearScale(d[chosenYAxis]))
             .attr("r", 12)
-            .attr("fill", "grey")
+            .attr("fill", "orange")
             .attr("opacity", ".4")
             .on('mouseover', tip.show)
             .on('mouseout', tip.hide);
@@ -167,7 +167,7 @@ d3.csv("assets/data/data.csv")
             .attr("y", 20)
             .attr("value", "Population") // value to grab for event listener
             .classed("active", true)
-            .text("Total State Population");
+            .text("Population By County");
 
         // var ageLabel = xlabelsGroup.append("text")
         //     .attr("x", 0)
@@ -194,7 +194,7 @@ d3.csv("assets/data/data.csv")
             .style("text-anchor", "middle")
             .attr("value", "PovertyRate") // value to grab for event listener
             .classed("active", true)
-            .text("Average Poverty Rate (%)");
+            .text("Poverty Rate (%)");
 
         var incomeLabel = ylabelsGroup.append("text")
             .attr("transform", "rotate(-90)")    
@@ -204,7 +204,7 @@ d3.csv("assets/data/data.csv")
             .style("text-anchor", "middle")
             .attr("value", "PerCapitaIncome") // value to grab for event listener
             .classed("inactive", true)
-            .text("Average Per Capita Income");
+            .text("Per Capita Income");
 
         var unemploymentLabel = ylabelsGroup.append("text")
             .attr("transform", "rotate(-90)")    
@@ -214,7 +214,7 @@ d3.csv("assets/data/data.csv")
             .style("text-anchor", "middle")
             .attr("value", "UnemploymentRate") // value to grab for event listener
             .classed("inactive", true)
-            .text("Average Unemployment Rate (%)");
+            .text("Unemployment Rate (%)");
 
         //see updateToolTip function
         var markersGroup = updateToolTip(chosenXAxis, chosenYAxis, markersGroup); 
