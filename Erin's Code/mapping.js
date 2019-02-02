@@ -1,6 +1,6 @@
 // Creating map object
 var map = L.map("map", {
-  center: [40.7128, -74.0059],
+  center: [38.925228, -97.211838],
   zoom: 5
 });
 
@@ -15,11 +15,12 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 
 var link = "county.geojson";
+var csv_data = "../county_census_data.csv"
 
 // Our style object
 var mapStyle = {
   color: "black",
-  weight: 1.5
+  weight: 0.5
 };
 
 // Grabbing our GeoJSON data..
