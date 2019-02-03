@@ -11,11 +11,17 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   id: "mapbox.streets",
   accessToken: "pk.eyJ1Ijoia3VsaW5pIiwiYSI6ImNpeWN6bjJ0NjAwcGYzMnJzOWdoNXNqbnEifQ.jEzGgLAwQnZCv9rA6UTfxQ"
 }).addTo(map);
-
-
+//calling in csv_data
+d3.csv("county_census_data.csv", function(data) {
+  data.forEach(function(d){
+    d.geoid = +d.geoid;
+    d.Poverty_Rate = +d.Poverty_Rate;
+    d.Unemployment_Rate = +d.Unemployment_Rate;
+  });
+  console.log(data[0]);
+});
 
 var link = "county.geojson";
-var csv_data = "../county_census_data.csv"
 
 // Our style object
 var mapStyle = {
