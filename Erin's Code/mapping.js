@@ -28,7 +28,7 @@ var link = "out.geojson";
 var poverty_rate = d3.json(link, function(data) {
   // Creating a geoJSON layer with the retrieved data
   L.choropleth(data, {
-    valueProperty: "Poverty_Rate",
+    valueProperty: "poverty_rate",
     scale: ['white', 'red'],
     steps: 5,
     mode: "q",
@@ -40,7 +40,7 @@ var poverty_rate = d3.json(link, function(data) {
     },
     onEachFeature: function (feature, layer) {
       layer.bindPopup(feature.properties.Name + "<br>Poverty Rate:</br>"
-        +feature.properties.Poverty_Rate+ "%");
+        +feature.properties.poverty_rate+ "%");
 
     }
   }).addTo(map);
