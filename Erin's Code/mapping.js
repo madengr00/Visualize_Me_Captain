@@ -25,7 +25,7 @@ var poverty_rate = d3.json(link, function(data) {
     mode: "q",
     style: {
       // Border color
-      color: "#fff",
+      color: "black",
       weight: 0.5,
       fillOpacity: 0.8
     },
@@ -47,7 +47,7 @@ var unemployment_rate= d3.json(link, function(data) {
     mode: "q",
     style: {
       // Border color
-      color: "#fff",
+      color: "black",
       weight: 0.5,
       fillOpacity: 0.8
     },
