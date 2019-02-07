@@ -3,15 +3,38 @@ var link = "out.geojson";
 
 var poverty_layer = new L.LayerGroup();
 
-var poverty;
+function highlightFeature(e) {
+    var layer = e.target;
 
-// Grabbing our GeoJSON data..
+    layer.setStyle({
+      weight: 3,
+      color: "white",
+      dashArray: "",
+    //   fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+      layer.bringToFront();
+    }
+
+    info.update(layer.feature.properties);
+  }
+
+  var poverty;
+
+  function resetHighlight(e) {
+    poverty.resetStyle(e.target);
+    info.update();
+  }
+
+  // Grabbing our GeoJSON data..
 d3.json(link, function(data) {
   // Creating a geoJSON layer with the retrieved data
   poverty = L.choropleth(data, {
     valueProperty: "poverty_rate",
+    legend_name : "Poverty Distribution",
     scale: ['white', 'red'],
-    steps: 5,
+    steps: 6,
     mode: "q",
     style: {
       // Border color
@@ -21,7 +44,12 @@ d3.json(link, function(data) {
     },
     onEachFeature: function (feature, layer) {
       layer.bindPopup(feature.properties.Name + "<br>Poverty Rate:</br>"
-        +feature.properties.poverty_rate+ "%");
+        +feature.properties.poverty_rate+ "%"),
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+          });
         
 
     }
@@ -32,14 +60,40 @@ createMap(poverty_layer);
 
 var unemployment_layer = new L.LayerGroup();
 
-var unemployment;
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+      weight: 5,
+      color: "white",
+      dashArray: "",
+      fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+      layer.bringToFront();
+    }
+
+    info.update(layer.feature.properties);
+  }
+
+  var unemployment;
+
+  function resetHighlight(e) {
+    unemployment.resetStyle(e.target);
+    info.update();
+  }
+
+  function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+  }
 
 d3.json(link, function(data) {
     // Creating a geoJSON layer with the retrieved data
     unemployment = L.choropleth(data, {
       valueProperty: "unemployment_rate",
       scale: ['white', 'blue'],
-      steps: 7,
+      steps: 6,
       mode: "q",
       style: {
         // Border color
@@ -49,10 +103,16 @@ d3.json(link, function(data) {
       },
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.Name + "<br>Unemployment Rate:</br>"
-          +feature.properties.unemployment_rate + "%");
+          +feature.properties.unemployment_rate + "%"),
+          layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+          });
   
       }
     }).addTo(unemployment_layer);
+   
   });
 
   function createMap() {
