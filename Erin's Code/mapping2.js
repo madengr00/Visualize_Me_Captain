@@ -7,17 +7,21 @@ function highlightFeature(e) {
     var layer = e.target;
 
     layer.setStyle({
-      weight: 3,
+      weight: 5,
       color: "white",
       dashArray: "",
+<<<<<<< HEAD
       fillOpacity: 0.7
+=======
+      fillOpacity: 0
+>>>>>>> Erin_Ford
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
       layer.bringToFront();
     }
 
-    info.update(layer.feature.properties);
+    poverty_layer.update(layer.feature.properties);
   }
 
   var poverty;
@@ -48,7 +52,7 @@ d3.json(link, function(data) {
         layer.on({
             mouseover: highlightFeature,
             mouseout: resetHighlight,
-            click: zoomToFeature
+            // click: zoomToFeature
           });
         
 
@@ -84,16 +88,16 @@ function highlightFeature(e) {
     info.update();
   }
 
-  function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-  }
+  // function zoomToFeature(e) {
+  //   map.fitBounds(e.target.getBounds());
+  // }
 
 d3.json(link, function(data) {
     // Creating a geoJSON layer with the retrieved data
     unemployment = L.choropleth(data, {
       valueProperty: "unemployment_rate",
       scale: ['white', 'blue'],
-      steps: 6,
+      steps: 8,
       mode: "q",
       style: {
         // Border color
@@ -102,18 +106,19 @@ d3.json(link, function(data) {
         fillOpacity: 0.8
       },
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.Name + "<br>Unemployment Rate:</br>"
-          +feature.properties.unemployment_rate + "%"),
-          layer.on({
+        layer.on({
             mouseover: highlightFeature,
             mouseout: resetHighlight,
-            click: zoomToFeature
+            // click: zoomToFeature
           });
+          if (feature.properties) {
+            layer.bindPopup(feature.properties.Name + "<br>Unemployment Rate:</br>"
+          +feature.properties.unemployment_rate + "%");
+          }
   
       }
     }).addTo(unemployment_layer);
-   
-  });
+   });
 
   function createMap() {
       var basemap =L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
@@ -136,37 +141,54 @@ d3.json(link, function(data) {
       var mymap = L.map("map", {
           center: [38.925228, -97.211838],
           zoom: 5,
-          layers: [basemap, poverty_layer]
+          layers: [basemap]
 
       });
 
       L.control.layers(baseLayers, overlays).addTo(mymap);
 
-      
-      var legend = L.control({ position: 'bottomright' });
-      legend.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'info legend')
+      var povertyLegend = L.control({position:"bottomright"});
+      var unemploymentLegend = L.control({position: "bottomright"});
+
+      povertyLegend.onAdd = function (map) {
+        var div = L.DomUtil.create("div", "info legend")
         var colors = poverty.options.colors
-        var labels = []
-    
-        /* Add min & max*/
+        labels = []
         div.innerHTML = '<div><h3 style="font-weight:bolder;font-size:larger;">Poverty Distribution</h3><br></div><div class="labels"><div class="min">Low</div> \
-      <div class="max">High</div></div>'
+    <div class="max">High</div></div>'
     
-      for (i = 1; i < colors.length; i++) {
-          labels.push('<li style="background-color: ' + colors[i] + '"></li>')
-        }
-    
-        div.innerHTML += '<ul style="list-style-type:none;display:flex">' + labels.join('') + '</ul>'
-        return div
-      }
-    
-      legend.addTo(mymap);
-    
+    for (i = 1; i < colors.length; i++) {
+      labels.push('<li style="background-color: ' + colors[i] + '"></li>')
+    }
+
+    div.innerHTML += '<ul style="list-style-type:none;display:flex">' + labels.join('') + '</ul>'
+    return div
     };
 
+    unemploymentLegend.onAdd = function(map) {
+    var div = L.DomUtil.create("div", "info legend");
+    var colors = unemployment.options.colors
+    labels = []
+        div.innerHTML = '<div><h3 style="font-weight:bolder;font-size:larger;">Unemployment Distribution</h3><br></div><div class="labels"><div class="min">Low</div> \
+    <div class="max">High</div></div>'
+    
+    for (i = 1; i < colors.length; i++) {
+      labels.push('<li style="background-color: ' + colors[i] + '"></li>')
+    }
 
+    div.innerHTML += '<ul style="list-style-type:none;display:flex">' + labels.join('') + '</ul>'
+    return div
+    };
 
+    povertyLegend.addTo(mymap);
 
-
-
+    mymap.on("overlayadd", function (eventLayer) {
+      if(eventLayer.name === "Poverty Distribution") {
+        this.removeControl(unemploymentLegend);
+        povertyLegend.addTo(this);
+      } else {
+        this.removeControl(povertyLegend);
+        unemploymentLegend.addTo(this);
+      }
+    });
+  }
