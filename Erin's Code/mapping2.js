@@ -10,21 +10,21 @@ function highlightFeature(e) {
       weight: 5,
       color: "white",
       dashArray: "",
-      fillOpacity: 0
+      fillOpacity: 0.8
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
       layer.bringToFront();
     }
 
-    poverty_layer.update(layer.feature.properties);
+   
   }
 
   var poverty;
 
   function resetHighlight(e) {
     poverty.resetStyle(e.target);
-    info.update();
+    
   }
 
   // Grabbing our GeoJSON data..
@@ -67,21 +67,20 @@ function highlightFeature(e) {
       weight: 5,
       color: "white",
       dashArray: "",
-      fillOpacity: 0.7
+      fillOpacity: 0.8
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
       layer.bringToFront();
     }
 
-    info.update(layer.feature.properties);
   }
 
   var unemployment;
 
   function resetHighlight(e) {
     unemployment.resetStyle(e.target);
-    info.update();
+    
   }
 
   // function zoomToFeature(e) {
@@ -137,12 +136,12 @@ d3.json(link, function(data) {
       var mymap = L.map("map", {
           center: [38.925228, -97.211838],
           zoom: 5,
-          layers: [basemap]
+          layers: [basemap, poverty_layer]
 
       });
-
+      
       L.control.layers(baseLayers, overlays).addTo(mymap);
-
+//Adding legend
       var povertyLegend = L.control({position:"bottomright"});
       var unemploymentLegend = L.control({position: "bottomright"});
 
