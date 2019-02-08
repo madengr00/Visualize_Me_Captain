@@ -7,17 +7,17 @@ function highlightFeature(e) {
     var layer = e.target;
 
     layer.setStyle({
-      weight: 3,
+      weight: 5,
       color: "white",
       dashArray: "",
-    //   fillOpacity: 0.7
+      fillOpacity: 0
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
       layer.bringToFront();
     }
 
-    info.update(layer.feature.properties);
+    poverty_layer.update(layer.feature.properties);
   }
 
   var poverty;
@@ -48,7 +48,7 @@ d3.json(link, function(data) {
         layer.on({
             mouseover: highlightFeature,
             mouseout: resetHighlight,
-            click: zoomToFeature
+            // click: zoomToFeature
           });
         
 
@@ -84,16 +84,16 @@ function highlightFeature(e) {
     info.update();
   }
 
-  function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-  }
+  // function zoomToFeature(e) {
+  //   map.fitBounds(e.target.getBounds());
+  // }
 
 d3.json(link, function(data) {
     // Creating a geoJSON layer with the retrieved data
     unemployment = L.choropleth(data, {
       valueProperty: "unemployment_rate",
       scale: ['white', 'blue'],
-      steps: 6,
+      steps: 8,
       mode: "q",
       style: {
         // Border color
@@ -102,18 +102,19 @@ d3.json(link, function(data) {
         fillOpacity: 0.8
       },
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.Name + "<br>Unemployment Rate:</br>"
-          +feature.properties.unemployment_rate + "%"),
-          layer.on({
+        layer.on({
             mouseover: highlightFeature,
             mouseout: resetHighlight,
-            click: zoomToFeature
+            // click: zoomToFeature
           });
+          if (feature.properties) {
+            layer.bindPopup(feature.properties.Name + "<br>Unemployment Rate:</br>"
+          +feature.properties.unemployment_rate + "%");
+          }
   
       }
     }).addTo(unemployment_layer);
-   
-  });
+   });
 
   function createMap() {
       var basemap =L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
@@ -136,7 +137,7 @@ d3.json(link, function(data) {
       var mymap = L.map("map", {
           center: [38.925228, -97.211838],
           zoom: 5,
-          layers: [basemap, poverty_layer]
+          layers: [basemap]
 
       });
 
