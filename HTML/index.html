@@ -72,21 +72,16 @@
                         <li class="active">
                             <a href="index.html"><i class="icon-chevron-right"></i> Dashboard</a>
                         </li>
-                        <li>
-                            <a href="Discussion.html"><i class="icon-chevron-right"></i> Discussion</a>
-                        </li>
                     </ul>
                 </div>
 
-                <div class="span9" id="content"></div>
-                <div class="span9" id="content"></div>
-                <div class="span9" id="content"></div>
-                <div class="span9" id="content"></div>
 
+                <div class="span27" id="content"></div>
                 <div class="span3" id="content"></div>
                 <div class="span9" id="content">
                     <div class="article"></div>
                     <div class="row">
+                        <h2>2017 Correlations to Population?</h2>
                         <div id="scatter">
                         <!-- We append our first chart here. -->
                         </div>
@@ -99,8 +94,7 @@
                     </div>
                     <div class="row"></div>
                     <div class="article">
-                        <h2>2017 Correlations to Population?</h2>
-                        <p>Average poverty rate by county/state does not have a noticeble trend uo or down to overall state population. However, as the poulation increases, we may be seeing some convergence to a median value.   </p>
+                        <p>Average poverty rate by county/state does not have a noticeble trend up or down to overall state population. However, as the poulation increases, we may be seeing some convergence to a median value.   </p>
               
                         <h4> District of Columbia:</h4> The District of Columbia is not a state, and compared to the states, appears to be a unique outlier. Perhaps the data would be better captured as part of Maryland.
                         <h5>D.C. Notes:</h5>
@@ -123,58 +117,84 @@
                 <div class="span9" id="content">
                     <div class="article"></div>
                     <div class="row">
+                        <h2>Distribution of Debt Against Income</h2>
                         <div id="scatter3">
                         <!-- We append our third chart here. -->
                         </div>
                     </div>
                     <div class="row"></div>
                     <div class="article">
-                        <h2>2017 Correlations to Population?</h2>
-                        <p>Average poverty rate by county/state does not have a noticeble trend uo or down to overall state population. However, as the poulation increases, we may be seeing some convergence to a median value.   </p>
-              
-                        <h4> District of Columbia:</h4> The District of Columbia is not a state, and compared to the states, appears to be a unique outlier. Perhaps the data would be better captured as part of Maryland.
-                        <h5>D.C. Notes:</h5>
-                        <ol>
-                        <li>One of the highest per capita incomes</li>
-                        <li>One of the highest unemployment rates</li>
-                        <li>High student debt rate (21% student debt)</li>
-                        <li>Midrange medical debt (33%)</li>
-                        <li>Auto debt rate is low. Is auto ownership low in the area?  A study of auto debt rates to availability of public transportation options might be interesting. </li>
-                        </ol>
-                        </p>
-              
-                        <h4> Debt to Income:</h4>
-                        <p>Auto debt and student debt do not appear to correlate to household income. Medical debt appears to trend down as household income increases. Further investigation into medical insurance coverage might shed more light on this statistic. </p>
-              
+                        <p>The scatter plot above compares the median income with a calculated multiple of total debt over median income by county. As we can see as median income rises the multiple of total debt over median income decreases. This means median income rises faster than debt as people make more money. This makes sense since people will have more money to pay for things compared to using debt. The top 10 most indebted states are Arizona, Alabama, North Carolina, Florida, Tennessee, Hawaii, New Mexico, South Carolina, Nevada, and West Virginia.</p>        
                     </div>
 
                     <div class="span12" id="content">
                         <div class="article"></div>
                         <div class="row">
+                            <h2>Poverty and Unemployment Distribution Across the United States</h2>
                             <!-- We append our map here. -->
-                                <iframe src="https://erinpovertymap.herokuapp.com/index.html" width=1000px height=500px></iframe>
+                            <iframe src="https://erinpovertymap.herokuapp.com/index.html" width=1000px height=500px></iframe>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                    <div class="article">
+                        <h4>Defining Poverty</h4>
+                            <p>The data we used for this choropleth was taken from the United States Census Bureau distributed in 2017. The census “uses a set of money income thresholds that vary by family size and composition to determine who is in poverty. If a family's total income is less than the family's threshold, then that family and every individual in it is considered in poverty. The official poverty thresholds do not vary geographically, but they are updated for inflation using the Consumer Price Index (CPI-U).” (USCB-“Poverty”)</p>
+                        <h4>Observations</h4>
+                            <p>There are definite bands of poverty distribution displayed in this visualization. Southern states appear to have higher poverty distribution than the northern states. Northern “Midwestern states” and areas along the eastern seaboard have relatively low poverty rates.  With regards to the “physical outliers”, Puerto Rico has uniform poverty distribution (high) , while Alaska and Hawaii have a mixed distribution.</p>
+                            <p>Unemployment seems more evenly dispersed, although the northern Midwest again shows a trend toward lower percentages. The eastern seaboard areas that had decreased poverty rates have average unemployment rates.</p>
+                        <h4>Questions Raised and Future Analysis Ideas</h4>
+                            <ol>How do these maps change annually? Are there drastic changes or are there subtle changes per year?</ol>
+                            <ol>Why do the southern states have such high poverty/unemployment rates?</ol>
+                            <ol>How would the median household income per county look on a choropleth?<ol> 
+                    </div>
+
+                    <div class="span12" id="content">
+                        <div class="row">
+                            <h2>The Cost of Poverty</h2>
+                            <div class="column">
+                                <!-- We append our images here -->
+                                <img src="assets/ErginCode/Img/AutoDebt.jpg" alt="Poverty vs Auto Debt" style="width:33%"">
+                                <img src="assets/ErginCode/Img/MedicalDebt.jpg" alt="Poverty vs Medical Debt" style="width:33%">
+                                <img src="assets/ErginCode/Img/StudentDebt.jpg" alt="Poverty vs Student Debt" style="width:33%">
                             </div>
                         </div>
-                        <div class="row"></div>
-                        <div class="article">
-                            <h2>2017 Correlations to Population?</h2>
-                            <p>Average poverty rate by county/state does not have a noticeble trend uo or down to overall state population. However, as the poulation increases, we may be seeing some convergence to a median value.   </p>
-                  
-                            <h4> District of Columbia:</h4> The District of Columbia is not a state, and compared to the states, appears to be a unique outlier. Perhaps the data would be better captured as part of Maryland.
-                            <h5>D.C. Notes:</h5>
-                            <ol>
-                            <li>One of the highest per capita incomes</li>
-                            <li>One of the highest unemployment rates</li>
-                            <li>High student debt rate (21% student debt)</li>
-                            <li>Midrange medical debt (33%)</li>
-                            <li>Auto debt rate is low. Is auto ownership low in the area?  A study of auto debt rates to availability of public transportation options might be interesting. </li>
+                    </div>
+                    <div class="row"></div>
+                    <div class="article">
+                    <p><em>In all of the charts above, debt is measured in 2017 United States Dollars (USD) along the Y-Axis and Percent Poverty along the X-Axis.</em></p>
+                        <h4>Disadvantages of Poverty</h4>
+                        <ol><h5>Debt for Automobiles/Vehicles</h5>
+                        <p>An explanation for why auto debt is not going higher can be due to ineligiblity, the individuals are not qualifed to be given cars or auto loans to be in debt or unaffordability, individuals are not choosing to buy or get in debt for a new or slightly used car when it is possibe to buy an older one.</p>
+                        </ol>
+                        <ol><h5>Debt for Medical Bills</h5>
+                        <p>Medical billing increases with poverty likely because there is no alternative to common illnesses or due to poor health conditions, expensive medical procedures that further increase an indivdual's debt.</p>
+                        </ol>
+                        <ol><h5>Debt for Education/Student Loans</h5>
+                        <p>No apparent relationship. A reason why student debt might not correlate with higher rates of poverty is because there's alternatives to traditional education, for example on the job and vocational making for a less expensive education and that repayment can be structured over many years.</p>
+                        </ol>
+                    </div>
+
+                    <div class="span12" id="content">
+                            <div class="row">
+                                <h2>Elucidating Trends in Large Amounts of Data</h2>
+                                <div class="column">
+                                    <!-- We append our heatmap here -->
+                                    <img src="assets/MichaelCode/Heatmap.jpg" alt="Poverty vs Medical Debt" style="width:80%">
+                                </div>
+                            </div>
+                            <div class="row"></div>
+                            <div class="article">
+                            <h4>Clusters of Data</h4>
+                            <p>The datasets used in this investigation of economic inequality were by and far, large. By using statistical analsis, the following data were found to be most relevant for comparison at the state level. Income, rates, and debt. Furthermore, using correlational analysis grouped US states according to their similarities across the board of data. When pairing this data to the heatmap above several prominent trends become visualized. Below are pertinent findings.</p>
+                            <h4>Observations</h4>
+                            <ol>There is a strong relationship between the median household income and their respective state's capital income.
                             </ol>
-                            </p>
-                  
-                            <h4> Debt to Income:</h4>
-                            <p>Auto debt and student debt do not appear to correlate to household income. Medical debt appears to trend down as household income increases. Further investigation into medical insurance coverage might shed more light on this statistic. </p>
-                  
+                            <ol>The percentage of poverty, unemployment, and medical debt also share a strong relationship.</ol>
+                            <ol>Not only do states with higher incomes have lower rates of poverty they are directly contrasted with states of moderate income and the highest and worst rates of poverty.</ol>
+                            <ol>The most impoverished states in the US share geographical boundaries and by extension historical bonds in the South and mid-Southwest regions.</ol>
+                            <ol>The other types of debt collected (student, auto, and other) form a broad band across the rest of the US and are higher in states with greater economic standings </ol>
                         </div>
+                    </div>
                 </div>
             </div>
 
