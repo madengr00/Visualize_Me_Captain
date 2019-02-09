@@ -1,10 +1,9 @@
 var svgWidth = 1000;
 var svgHeight = 400;
-// 960 and 600, respectively
 
 var margin = {
     top: 50,
-    right: 40,
+    right: 100,
     bottom: 90,
     left: 100
   };
@@ -25,8 +24,8 @@ var chartGroup3 = svg3.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 //Initialize default axis Parameters
-var chosenXAxis3 = "poverty";
-var chosenYAxis3 = "obesity"
+var chosenXAxis3 = "HouseHoldIncome";
+var chosenYAxis3 = "Multiple"
 
 
 // pull in data
@@ -34,21 +33,23 @@ d3.csv("assets/DylanCode/assets/data/mergedata2.csv")
   .then(function(data) {
 
     data.forEach(function(data) {
-      data.healthcare = +data.healthcare;
-      data.poverty = +data.poverty;
-      data.abbr = data.abbr;
-      data.state = data.state;
-      console.log(data.healthcare);
+      data.County = +data.County;
+      data.State = +data.State;
+      data.Population = data.Population;
+      data.HouseholdIncome = data.HouseholdIncome;
+      data.TotalDebt = data.TotalDebt;
+      data.Multiple = data.Multiple;
+      console.log(data.Multiple);
     });
 
     // Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([8, d3.max(data, d => d.poverty)])
+      .domain([15000, 120000])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([4, d3.max(data, d => d.healthcare)])
+      .domain([0.5, d3.max(data, d => d.Multiple)])
       .range([height, 0]);
 
     // Create axis functions
@@ -71,11 +72,11 @@ d3.csv("assets/DylanCode/assets/data/mergedata2.csv")
     .data(data)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d.poverty))
-    .attr("cy", d => yLinearScale(d.healthcare))
-    .attr("r", "15")
+    .attr("cx", d => xLinearScale(d.HouseholdIncome))
+    .attr("cy", d => yLinearScale(d.Multiple))
+    .attr("r", "5")
     .attr("fill", "blue")
-    .attr("opacity", ".8")
+    .attr("opacity", ".2")
 
     // Create text labels for circles
     var textGroup3 = chartGroup3.selectAll(".label")
@@ -85,24 +86,12 @@ d3.csv("assets/DylanCode/assets/data/mergedata2.csv")
      .attr("class", "label")
      .attr("text-anchor", "middle")
      .text(function(d) {return d.abbr;})
-     .attr("x", d => xLinearScale(d.poverty))
-     .attr("y", d => yLinearScale(d.healthcare)+6)
+     .attr("x", d => xLinearScale(d.HouseholdIncome))
+     .attr("y", d => yLinearScale(d.Multiple)+6)
      .attr("fill", "white")
      .attr("font-size", "12px")
      .attr("font-family","Arial");
-  
-    // Initialize tool tip... not sure if I need this
-    // ==============================
-   var toolTip = d3.tip()
-      .attr("class", "tooltip")
-      .offset([25, 0])
-      .html(function(d) {
-        return (`${d.abbr}`);
-      });
-
-    // Create tooltip in the chart
-    // ==============================
-     chartGroup3.call(toolTip);
+   
 
     // Create event listeners to display and hide the tooltip... not sure if I need this
     // ==============================
@@ -121,11 +110,10 @@ d3.csv("assets/DylanCode/assets/data/mergedata2.csv")
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Lacks Healthcare (%)");
+      .text("Total Debt / Income");
 
     chartGroup3.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top })`)
       .attr("class", "axisText")
-      .text("Poverty (%)");
+      .text("Median Income");
   });
-

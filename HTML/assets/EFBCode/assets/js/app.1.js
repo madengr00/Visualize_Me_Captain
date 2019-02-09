@@ -34,7 +34,7 @@ var tip = d3.tip()
 
 //**********************************************//
 // Retrieve data from the csv file and execute everything below
-d3.csv("assets/data/data.csv")
+d3.csv("assets/EFBCode/assets/data/data.csv")
     .then(function(data){
         //Step1:  parse data
         data.forEach(function(data) {
