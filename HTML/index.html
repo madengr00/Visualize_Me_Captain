@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="no-js">
+    
+    <head>
+        <title>Project 2: County Wealth</title>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="assets/styles.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="assets/d3Style.css">
+        <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    </head>
+    
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+
+                    </a>
+
+                    <a class="brand" href="#">COUNTY WEALTH</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> The Team <i class="caret"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="https://github.com/erginbostanci">Ergin Bostanci</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="https://github.com/madengr00">Elizabeth Brown</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="https://github.com/mhchopade">Michael Chopade</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="https://github.com/eford0121">Erin Ford</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="https://github.com/DTG101">Dylan Grimm</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <!-- Place the title of the page here-->
+                                <a href="#">Dashboard</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="active">
+                            <a href="index.html"><i class="icon-chevron-right"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="Discussion.html"><i class="icon-chevron-right"></i> Discussion</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="span9" id="content"></div>
+                <div class="span9" id="content"></div>
+                <div class="span9" id="content"></div>
+                <div class="span9" id="content"></div>
+
+                <div class="span3" id="content"></div>
+                <div class="span9" id="content">
+                    <div class="article"></div>
+                    <div class="row">
+                        <div id="scatter">
+                        <!-- We append our first chart here. -->
+                        </div>
+                    </div>
+                    <div class="article"></div>
+                    <div class="row">
+                        <div id="scatter2">
+                        <!-- We append our second chart here. -->
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                    <div class="article">
+                        <h2>2017 Correlations to Population?</h2>
+                        <p>Average poverty rate by county/state does not have a noticeble trend uo or down to overall state population. However, as the poulation increases, we may be seeing some convergence to a median value.   </p>
+              
+                        <h4> District of Columbia:</h4> The District of Columbia is not a state, and compared to the states, appears to be a unique outlier. Perhaps the data would be better captured as part of Maryland.
+                        <h5>D.C. Notes:</h5>
+                        <ol>
+                        <li>One of the highest per capita incomes</li>
+                        <li>One of the highest unemployment rates</li>
+                        <li>High student debt rate (21% student debt)</li>
+                        <li>Midrange medical debt (33%)</li>
+                        <li>Auto debt rate is low. Is auto ownership low in the area?  A study of auto debt rates to availability of public transportation options might be interesting. </li>
+                        </ol>
+                        </p>
+              
+                        <h4> Debt to Income:</h4>
+                        <p>Auto debt and student debt do not appear to correlate to household income. Medical debt appears to trend down as household income increases. Further investigation into medical insurance coverage might shed more light on this statistic. </p>
+              
+                    </div>
+                </div>
+
+                <div class="span3" id="content"></div>
+                <div class="span9" id="content">
+                    <div class="article"></div>
+                    <div class="row">
+                        <div id="scatter3">
+                        <!-- We append our third chart here. -->
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                    <div class="article">
+                        <h2>2017 Correlations to Population?</h2>
+                        <p>Average poverty rate by county/state does not have a noticeble trend uo or down to overall state population. However, as the poulation increases, we may be seeing some convergence to a median value.   </p>
+              
+                        <h4> District of Columbia:</h4> The District of Columbia is not a state, and compared to the states, appears to be a unique outlier. Perhaps the data would be better captured as part of Maryland.
+                        <h5>D.C. Notes:</h5>
+                        <ol>
+                        <li>One of the highest per capita incomes</li>
+                        <li>One of the highest unemployment rates</li>
+                        <li>High student debt rate (21% student debt)</li>
+                        <li>Midrange medical debt (33%)</li>
+                        <li>Auto debt rate is low. Is auto ownership low in the area?  A study of auto debt rates to availability of public transportation options might be interesting. </li>
+                        </ol>
+                        </p>
+              
+                        <h4> Debt to Income:</h4>
+                        <p>Auto debt and student debt do not appear to correlate to household income. Medical debt appears to trend down as household income increases. Further investigation into medical insurance coverage might shed more light on this statistic. </p>
+              
+                    </div>
+
+                    <div class="span12" id="content">
+                        <div class="article"></div>
+                        <div class="row">
+                            <!-- We append our map here. -->
+                                <iframe src="https://erinpovertymap.herokuapp.com/index.html" width=1000px height=500px></iframe>
+                            </div>
+                        </div>
+                        <div class="row"></div>
+                        <div class="article">
+                            <h2>2017 Correlations to Population?</h2>
+                            <p>Average poverty rate by county/state does not have a noticeble trend uo or down to overall state population. However, as the poulation increases, we may be seeing some convergence to a median value.   </p>
+                  
+                            <h4> District of Columbia:</h4> The District of Columbia is not a state, and compared to the states, appears to be a unique outlier. Perhaps the data would be better captured as part of Maryland.
+                            <h5>D.C. Notes:</h5>
+                            <ol>
+                            <li>One of the highest per capita incomes</li>
+                            <li>One of the highest unemployment rates</li>
+                            <li>High student debt rate (21% student debt)</li>
+                            <li>Midrange medical debt (33%)</li>
+                            <li>Auto debt rate is low. Is auto ownership low in the area?  A study of auto debt rates to availability of public transportation options might be interesting. </li>
+                            </ol>
+                            </p>
+                  
+                            <h4> Debt to Income:</h4>
+                            <p>Auto debt and student debt do not appear to correlate to household income. Medical debt appears to trend down as household income increases. Further investigation into medical insurance coverage might shed more light on this statistic. </p>
+                  
+                        </div>
+                </div>
+            </div>
+
+
+        <hr>
+        <footer>
+        <!-- Place a footer here -->
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+        <script type="text/javascript" src="assets/EFBCode/assets/js/app.js"></script>
+        <script type="text/javascript" src="assets/EFBCode/assets/js/app2.js"></script>
+        <script type="text/javascript" src="assets/DylanCode/app.js"></script>
+        <script src="vendors/jquery-1.9.1.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/scripts.js"></script>
+    </body>
+
+</html>
